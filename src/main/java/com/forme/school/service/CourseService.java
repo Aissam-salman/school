@@ -30,14 +30,8 @@ public class CourseService {
         return courseRepository.findAll();
     }
 
-    public boolean delete(final Long id) {
-        try {
-            courseRepository.deleteById(id);
-            return true;
-        } catch (final Exception e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
+    public void delete(final Long id) {
+        courseRepository.deleteById(id);
     }
 
 }

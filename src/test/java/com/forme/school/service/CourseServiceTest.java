@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -45,10 +46,29 @@ class CourseServiceTest {
     }
 
     @Test
-    void shouldReturnCourseByName() {}
+    void shouldReturnCourseByName() {
+        Course course = new Course(1L,"Cuisine","CUI101");
+        when(courseRepository.findByName("Cuisine")).thenReturn(Optional.of(course));
+
+        Course courseByName = courseService.findByName("Cuisine");
+
+        assertThat(courseByName).isEqualTo(course);
+    }
 
     @Test
     void shouldReturnCourseOnSaveOrUpdate(){
+        Course course = new Course(1L,"Cuisine","CUI101");
+        when(courseRepository.save(course)).thenReturn(course);
 
+        Course savedCourse = courseService.createOrUpdate(course);
+
+        assertThat(savedCourse).isEqualTo(course);
+    }
+
+    @Test
+    void shouldDeleteCourse() {
+        courseService.delete(1L);
+
+        verify(courseRepository).deleteById(1L);
     }
 }
