@@ -24,14 +24,6 @@ public class Rate {
 
     private LocalDateTime rate_date;
 
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
     public Rate() {
     }
 
@@ -53,6 +45,14 @@ public class Rate {
         this.student = student;
         this.rate_v = rate_v;
         this.rate_date = rate_date;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public Long getId() {

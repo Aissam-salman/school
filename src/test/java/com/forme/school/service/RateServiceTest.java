@@ -27,10 +27,10 @@ class RateServiceTest {
 
     @Test
     void shouldReturnAllRates() {
-        Course course = new Course(1L,"Maths","MATH101");
-        Course course2 = new Course(2L,"Economics","ECO101");
+        Course course = new Course(1L, "Maths", "MATH101");
+        Course course2 = new Course(2L, "Economics", "ECO101");
 
-        Student student = new Student(1L,"John","Doe");
+        Student student = new Student(1L, "John", "Doe");
 
         Rate rate1 = new Rate(1L, course, student, 15.5, LocalDateTime.now());
         Rate rate2 = new Rate(2L, course2, student, 13.7, LocalDateTime.now());
@@ -44,9 +44,9 @@ class RateServiceTest {
 
     @Test
     void shouldReturnRateById() {
-        Course course = new Course(1L,"Maths","MATH101");
+        Course course = new Course(1L, "Maths", "MATH101");
 
-        Student student = new Student(1L,"John","Doe");
+        Student student = new Student(1L, "John", "Doe");
 
         Rate rate1 = new Rate(1L, course, student, 15.5, LocalDateTime.now());
 
@@ -58,11 +58,11 @@ class RateServiceTest {
     }
 
     @Test
-    void shouldReturnRateOnSave(){
+    void shouldReturnRateOnSave() {
 
-        Course course = new Course(1L,"Maths","MATH101");
+        Course course = new Course(1L, "Maths", "MATH101");
 
-        Student student = new Student(1L,"John","Doe");
+        Student student = new Student(1L, "John", "Doe");
 
         Rate rate1 = new Rate(1L, course, student, 15.5, LocalDateTime.now());
         when(rateRepository.save(rate1)).thenReturn(rate1);
@@ -73,10 +73,10 @@ class RateServiceTest {
     }
 
     @Test
-    void shouldReturnRateOnUpdate(){
-        Course course = new Course(1L,"Maths","MATH101");
+    void shouldReturnRateOnUpdate() {
+        Course course = new Course(1L, "Maths", "MATH101");
 
-        Student student = new Student(1L,"John","Doe");
+        Student student = new Student(1L, "John", "Doe");
 
         Rate rate1 = new Rate(1L, course, student, 15.5, LocalDateTime.now());
         Rate updatedRate = new Rate(1L, course, student, 13.7, LocalDateTime.now());
@@ -84,13 +84,13 @@ class RateServiceTest {
         when(rateRepository.findById(1L)).thenReturn(Optional.of(rate1));
         when(rateRepository.save(rate1)).thenReturn(updatedRate);
 
-        Rate savedRate = rateService.updateValue(1L,13.7);
+        Rate savedRate = rateService.updateValue(1L, 13.7);
 
         assertThat(savedRate).isEqualTo(updatedRate);
     }
 
     @Test
-    void shouldDeleteRate(){
+    void shouldDeleteRate() {
         rateService.delete(1L);
         verify(rateRepository).deleteById(1L);
     }

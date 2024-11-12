@@ -23,20 +23,20 @@ class CourseServiceTest {
 
     @Test
     void shouldReturnAllCourses() {
-        Course course = new Course(1L,"Cuisine","CUI101");
-        Course course2 = new Course(2L,"Economics","ECO101");
+        Course course = new Course(1L, "Cuisine", "CUI101");
+        Course course2 = new Course(2L, "Economics", "ECO101");
 
         // define return of mock (fake repo method return for testing service)
-        when(courseRepository.findAll()).thenReturn(List.of(course,course2));
+        when(courseRepository.findAll()).thenReturn(List.of(course, course2));
 
         List<Course> courses = courseService.findAll();
 
-        assertThat(courses).hasSize(2).containsExactly(course,course2);
+        assertThat(courses).hasSize(2).containsExactly(course, course2);
     }
 
     @Test
     void shouldReturnCourseById() {
-        Course course = new Course(1L,"Cuisine","CUI101");
+        Course course = new Course(1L, "Cuisine", "CUI101");
 
         when(courseRepository.findById(1L)).thenReturn(Optional.of(course));
 
@@ -47,7 +47,7 @@ class CourseServiceTest {
 
     @Test
     void shouldReturnCourseByName() {
-        Course course = new Course(1L,"Cuisine","CUI101");
+        Course course = new Course(1L, "Cuisine", "CUI101");
         when(courseRepository.findByName("Cuisine")).thenReturn(Optional.of(course));
 
         Course courseByName = courseService.findByName("Cuisine");
@@ -56,8 +56,8 @@ class CourseServiceTest {
     }
 
     @Test
-    void shouldReturnCourseOnSaveOrUpdate(){
-        Course course = new Course(1L,"Cuisine","CUI101");
+    void shouldReturnCourseOnSaveOrUpdate() {
+        Course course = new Course(1L, "Cuisine", "CUI101");
         when(courseRepository.save(course)).thenReturn(course);
 
         Course savedCourse = courseService.createOrUpdate(course);

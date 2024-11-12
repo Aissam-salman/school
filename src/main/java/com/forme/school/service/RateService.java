@@ -36,7 +36,7 @@ public class RateService {
         return null;
     }
 
-    public void   delete(final Long id) {
+    public void delete(final Long id) {
         try {
             rateRepository.deleteById(id);
         } catch (final Exception e) {

@@ -17,7 +17,7 @@ class StudentRepositoryTest {
     private StudentRepository studentRepository;
 
     @Test
-    void shouldGetAllStudents(){
+    void shouldGetAllStudents() {
         List<Student> students = studentRepository.findAll();
 
         assertEquals(3, students.size());
@@ -25,7 +25,7 @@ class StudentRepositoryTest {
     }
 
     @Test
-    void shouldGetStudentById(){
+    void shouldGetStudentById() {
         Student student = studentRepository.findById(1L).get();
 
         assertEquals("Alice", student.getFirstName());
@@ -33,7 +33,7 @@ class StudentRepositoryTest {
     }
 
     @Test
-    void shouldSaveStudent(){
+    void shouldSaveStudent() {
         Student student = new Student();
         student.setFirstName("Sam");
         student.setLastName("Dupont");
@@ -46,7 +46,7 @@ class StudentRepositoryTest {
     }
 
     @Test
-    void shouldUpdateStudent(){
+    void shouldUpdateStudent() {
         Student student = studentRepository.findById(1L).get();
         student.setFirstName("Mela");
 
@@ -56,7 +56,7 @@ class StudentRepositoryTest {
     }
 
     @Test
-    void shouldDeleteStudent(){
+    void shouldDeleteStudent() {
         studentRepository.deleteById(3L);
 
         Optional<Student> studentOptional = studentRepository.findById(3L);

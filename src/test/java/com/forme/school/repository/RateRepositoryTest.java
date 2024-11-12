@@ -28,7 +28,7 @@ class RateRepositoryTest {
     }
 
     @Test
-    void shouldSaveRate(){
+    void shouldSaveRate() {
         Rate rate = new Rate();
 
         Student student = studentRepository.findById(1L).get();
@@ -48,7 +48,7 @@ class RateRepositoryTest {
     }
 
     @Test
-    void shouldUpdateRate(){
+    void shouldUpdateRate() {
         Rate rate = rateRepository.findById(1L).get();
         rate.setRate_date(LocalDateTime.now());
         rate.setRate_v(11.5);
@@ -60,7 +60,7 @@ class RateRepositoryTest {
     }
 
     @Test
-    void shouldDeleteRate(){
+    void shouldDeleteRate() {
         rateRepository.deleteById(3L);
 
         Optional<Rate> rate = rateRepository.findById(3L);

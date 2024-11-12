@@ -53,7 +53,7 @@ public class RateController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteRate(@PathVariable Long id) {
         Rate rate = rateService.findRateById(id);
-        if(Objects.nonNull(rate)) {
+        if (Objects.nonNull(rate)) {
             rateService.delete(id);
             return ResponseEntity.noContent().build();
         }

@@ -62,7 +62,7 @@ public class CourseController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
         Course course = courseService.findById(id);
-        if(Objects.nonNull(course)) {
+        if (Objects.nonNull(course)) {
             courseService.delete(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 

@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS Course
 -- Création de la table Student
 CREATE TABLE IF NOT EXISTS Student
 (
-    id   INT PRIMARY KEY AUTO_INCREMENT,
-    first_name  VARCHAR(255),
+    id         INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(255),
     last_name  VARCHAR(255)
 );
 
@@ -44,15 +44,15 @@ CREATE TABLE IF NOT EXISTS Rate
 
 -- Insertion des données de test avec MERGE
 MERGE INTO Course (name, code)
-    KEY(code)
+    KEY (code)
     VALUES ('Mathematics', 'MATH101');
 
 MERGE INTO Course (name, code)
-    KEY(code)
+    KEY (code)
     VALUES ('Physics', 'PHYS201');
 
 MERGE INTO Course (name, code)
-    KEY(code)
+    KEY (code)
     VALUES ('Chemistry', 'CHEM301');
 
 -- Insertion des étudiants
@@ -64,9 +64,12 @@ INSERT INTO Student (first_name, last_name)
 VALUES ('Charlie', 'Durand');
 
 -- Inscriptions aux cours de maths
-INSERT INTO student_course (student_id, course_id) VALUES (1, 1);
-INSERT INTO student_course (student_id, course_id) VALUES (2, 1);
-INSERT INTO student_course (student_id, course_id) VALUES (3, 1);
+INSERT INTO student_course (student_id, course_id)
+VALUES (1, 1);
+INSERT INTO student_course (student_id, course_id)
+VALUES (2, 1);
+INSERT INTO student_course (student_id, course_id)
+VALUES (3, 1);
 
 -- Notes directes (sans SELECT complexe)
 INSERT INTO Rate (course_id, student_id, rate_v, rate_date)

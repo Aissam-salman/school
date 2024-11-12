@@ -3,9 +3,7 @@ package com.forme.school.repository;
 import com.forme.school.entity.Course;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 import java.util.Optional;
@@ -72,11 +70,11 @@ class CourseRepositoryTest {
 
     @Test
     void shouldDeleteCourse() {
-         courseRepository.deleteById(3L);
+        courseRepository.deleteById(3L);
 
-         Optional<Course> course = courseRepository.findById(3L);
+        Optional<Course> course = courseRepository.findById(3L);
 
-         assertFalse(course.isPresent());
+        assertFalse(course.isPresent());
     }
 
 }

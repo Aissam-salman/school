@@ -21,6 +21,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @WebMvcTest(StudentController.class)
 class StudentControllerTest {
     @Autowired
@@ -38,9 +39,9 @@ class StudentControllerTest {
     @Test
     void shouldReturnAllStudents() throws Exception {
         Student student1 = new Student(1L, "Doe", "john");
-        Student student2 = new Student(2L, "foo","boo");
+        Student student2 = new Student(2L, "foo", "boo");
 
-        when(studentService.findAll()).thenReturn(List.of(student1,student2));
+        when(studentService.findAll()).thenReturn(List.of(student1, student2));
 
         mockMvc.perform(get("/api/students"))
                 .andExpect(status().isOk())
@@ -71,7 +72,7 @@ class StudentControllerTest {
 
 
         when(studentService.createOrUpdate(any(Student.class)))
-                .thenReturn(new Student(1L,"Loo", "Doo"));
+                .thenReturn(new Student(1L, "Loo", "Doo"));
 
         mockMvc.perform(post("/api/students")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -115,7 +116,7 @@ class StudentControllerTest {
         when(courseService.findById(1L)).thenReturn(course1);
         when(studentService.findById(1L)).thenReturn(student1);
 
-        when(schoolManagementService.registerStudentToCourse(student1.getId(),course1.getId())).thenReturn(course1);
+        when(schoolManagementService.registerStudentToCourse(student1.getId(), course1.getId())).thenReturn(course1);
 
         mockMvc.perform(post("/api/students/1/courses/1"))
                 .andExpect(status().isCreated());

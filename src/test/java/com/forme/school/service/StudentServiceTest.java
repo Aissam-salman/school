@@ -28,7 +28,7 @@ class StudentServiceTest {
         Student stu1 = new Student(1L, "Karim", "Elawi");
         Student stu2 = new Student(2L, "Lina", "Dual");
 
-        when(studentRepository.findAll()).thenReturn(List.of(stu1,stu2));
+        when(studentRepository.findAll()).thenReturn(List.of(stu1, stu2));
 
         List<Student> students = studentService.findAll();
 
@@ -47,7 +47,7 @@ class StudentServiceTest {
     }
 
     @Test
-    void shouldReturnStudentOnSaveOrUpdate(){
+    void shouldReturnStudentOnSaveOrUpdate() {
         Student stu1 = new Student(1L, "Karim", "Elawi");
         when(studentRepository.save(stu1)).thenReturn(stu1);
 
@@ -57,7 +57,7 @@ class StudentServiceTest {
     }
 
     @Test
-    void shouldDeleteStudent(){
+    void shouldDeleteStudent() {
         studentService.delete(1L);
 
         verify(studentRepository).deleteById(1L);

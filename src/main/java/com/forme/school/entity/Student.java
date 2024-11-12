@@ -19,7 +19,7 @@ public class Student {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "student_course",
-            joinColumns = { @JoinColumn(name = "student_id")},
+            joinColumns = {@JoinColumn(name = "student_id")},
             inverseJoinColumns = {@JoinColumn(name = "course_id")}
     )
     private Set<Course> courses;
@@ -29,11 +29,13 @@ public class Student {
 
     public Student() {
     }
+
     public Student(Long id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
     public Student(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
