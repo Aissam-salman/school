@@ -2,6 +2,7 @@ package com.forme.school.entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,7 +17,7 @@ public class Course {
     private String code;
 
     @ManyToMany(mappedBy = "courses")
-    private Set<Student> students;
+    private Set<Student> students = new HashSet<>();
 
     public Course() {
     }
@@ -31,11 +32,13 @@ public class Course {
         this.code = code;
     }
 
-    public Course(String name, Set<Student> students, String code) {
+    public Course(Long id, String name, String code, Set<Student> students) {
+        this.id = id;
         this.name = name;
         this.students = students;
         this.code = code;
     }
+
 
     public Long getId() {
         return id;

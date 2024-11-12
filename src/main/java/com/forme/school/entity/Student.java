@@ -10,7 +10,10 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -25,6 +28,11 @@ public class Student {
     private List<Rate> rates;
 
     public Student() {
+    }
+    public Student(Long id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
     public Student(String firstName, String lastName) {
         this.firstName = firstName;

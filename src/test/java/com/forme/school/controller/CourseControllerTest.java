@@ -52,6 +52,19 @@ class CourseControllerTest {
     }
 
     @Test
+    void shouldReturnCourseByName() throws Exception {
+        Course c = new Course(1L, "Cuisine", "CUI101");
+
+        when(courseService.findByName("Cuisine")).thenReturn(c);
+
+        mockMvc.perform(get("/api/courses/name/" + c.getName()))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("Cuisine"))
+                .andExpect(jsonPath("$.code").value("CUI101"));
+
+    }
+
+    @Test
     void shouldReturnCreateCourse() throws Exception {
         String json = """
                 {

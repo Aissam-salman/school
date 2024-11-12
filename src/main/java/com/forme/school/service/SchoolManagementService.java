@@ -19,7 +19,7 @@ public class SchoolManagementService {
 
 
     @Transactional
-    public void registerStudentToCourse(Long studentId, Long courseId) {
+    public Course registerStudentToCourse(Long studentId, Long courseId) {
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new RuntimeException("Student not found"));
 
@@ -31,6 +31,6 @@ public class SchoolManagementService {
         }
 
         course.getStudents().add(student);
-        courseRepository.save(course);
+        return courseRepository.save(course);
     }
 }

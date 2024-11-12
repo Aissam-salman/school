@@ -36,13 +36,11 @@ public class RateService {
         return null;
     }
 
-    public boolean delete(final Long id) {
+    public void   delete(final Long id) {
         try {
             rateRepository.deleteById(id);
-            return true;
         } catch (final Exception e) {
-            System.out.println(e.getMessage());
-            return false;
+            throw new RuntimeException("Erreur lors de la deletion du rate", e);
         }
     }
 }
